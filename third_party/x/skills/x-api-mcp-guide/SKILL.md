@@ -16,7 +16,10 @@ description: >-
   Scheduled X calls use schedule_call, list_scheduled_calls, get_scheduled_call,
   update_scheduled_call, cancel_scheduled_call, and respond_to_scheduled_call.
   Missing those tools or calls.read/calls.write while other X tools work:
-  reconnect the X plugin. Estimate every X call and confirm before anything expensive.
+  reconnect the X plugin. Livestreams use list_broadcasts, list_sources, and the
+  other broadcast and source tools. Missing those tools or
+  broadcast.read/broadcast.write while other X tools work: reconnect the X
+  plugin. Estimate every X call and confirm before anything expensive.
 ---
 # X MCP guide
 
@@ -142,6 +145,8 @@ Missing **Chat** tools (`get_chat_conversations`, `send_chat_message`, …) whil
 
 Missing **call** tools (`schedule_call`, `list_scheduled_calls`, …) while other X tools work is **not** #2. That is [X call scopes](#x-call-scopes) — reconnect for `calls.read` / `calls.write`.
 
+Missing **livestream** tools (`list_broadcasts`, `list_sources`, …) while other X tools work is **not** #2. That is [Livestream scopes](#livestream-scopes) — reconnect for `broadcast.read` / `broadcast.write`.
+
 **When (fallback):** `client-forbidden`; `user-not-enrolled`; `client-not-enrolled`; Client Forbidden; 403 on timeline / mentions / search / bookmarks after Connect.
 
 **Say:**
@@ -217,6 +222,16 @@ Do not tell them to create a Project or App. Do not ask for a Bearer token. Afte
 > X calls need an extra sign-in. Reconnect the X plugin in this chat and approve access to your calls. Then I'll retry. Don't paste keys or tokens.
 
 Do not tell them to create a Project or App. Do not ask for a Bearer token. After reconnect, follow [Scheduled calls](#scheduled-calls).
+
+### Livestream scopes
+
+**When:** the user wants their broadcasts, scheduled broadcasts, stream sources, or broadcast chat moderators and mutes, other X tools work, but those tools are missing or a call 403s for `broadcast.read` / `broadcast.write`.
+
+**Say:**
+
+> Livestreams need an extra sign-in. Reconnect the X plugin in this chat and approve access to your broadcasts. Then I'll retry. Don't paste keys, tokens, or stream keys.
+
+Do not tell them to create a Project or App. Do not ask for a Bearer token.
 
 ## Other errors
 
@@ -599,6 +614,7 @@ If `add_conversation_keys` returns `UNAUTHORIZED_REQUESTING_USER` or similar: yo
 - Treat tools=0 / `user-X-*` not found as a paywall. That is [error 2](#2-account-not-ready).
 - Treat missing Chat tools as “create a Project and App.” If other X tools work, that is [X Chat scopes](#x-chat-scopes) — reconnect.
 - Treat missing call tools as “create a Project and App.” If other X tools work, that is [X call scopes](#x-call-scopes) — reconnect.
+- Treat missing livestream tools as “create a Project and App.” If other X tools work, that is [Livestream scopes](#livestream-scopes) — reconnect.
 - Schedule, update, cancel, or RSVP to an X call unless the owner asked. Do not use the X Chat helper for calls.
 - Wait for the user to name `xchat_lite`, the helper repo, or a second X Chat skill. Clone it yourself.
 - Treat a reply as accepting a message request. Accept only with `accept_chat_message_request`, and only when the owner said to accept.
