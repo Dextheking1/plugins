@@ -1,7 +1,7 @@
 {
   "name": "google-cloud-bigquery",
   "displayName": "Google Cloud BigQuery",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minClientVersions": {
     "cursor": "3.13.0"
   },
@@ -32,5 +32,27 @@
     "sql",
     "mcp"
   ],
+  "variables": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "CLIENT_ID": {
+        "type": "string",
+        "title": "OAuth Client ID",
+        "description": "Client ID of a Web application OAuth client in your Google Cloud project (APIs & Services → Credentials)."
+      },
+      "CLIENT_SECRET": {
+        "type": "string",
+        "title": "OAuth Client Secret",
+        "description": "Client secret from the same Google Cloud OAuth client.",
+        "writeOnly": true,
+        "format": "password"
+      }
+    },
+    "required": [
+      "CLIENT_ID",
+      "CLIENT_SECRET"
+    ]
+  },
   "mcpServers": "./mcp.json"
 }
