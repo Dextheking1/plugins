@@ -65,7 +65,7 @@ Each member signs in to Databricks with their own account. Genie answers only fr
 - Databricks OAuth app connections: https://docs.databricks.com/aws/en/integrations/enable-disable-oauth
 - Model Context Protocol: https://modelcontextprotocol.io
 
-Logo is Databricks' official mark, from the `databricks` GitHub organization.
+Logo is Databricks' official Genie icon, from databricks.com.
 
 ## License
 
